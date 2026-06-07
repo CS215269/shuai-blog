@@ -1,0 +1,27 @@
+{% extends "base.njk" %}
+
+{% block content %}
+<section class="container" style="padding-top: 3rem; padding-bottom: 3rem;">
+  <h1 class="article-title" style="text-align: center; margin-bottom: 0.5rem;">
+    {{ page.tag }}
+  </h1>
+  <p style="text-align: center; color: var(--text-muted); margin-bottom: 2.5rem;">
+    {{ page.posts.length }} 篇文章
+  </p>
+
+  <ul class="post-list">
+    {% for post in page.posts.sort('date', -1).toArray() %}
+    <li class="post-item">
+      <a href="{{ url_for(post.path) }}" class="post-link">
+        <span class="post-title-text">{{ post.title }}</span>
+        <span class="post-date">{{ date(post.date, 'YYYY-MM-DD') }}</span>
+      </a>
+    </li>
+    {% endfor %}
+  </ul>
+
+  <div style="text-align: center; margin-top: 2rem;">
+    <a href="{{ url_for('/') }}" class="article-action-link">&larr; 回到首页</a>
+  </div>
+</section>
+{% endblock %}
