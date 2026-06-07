@@ -1,0 +1,66 @@
+{% extends "base.njk" %}
+
+{% block content %}
+<article class="article-wrapper container-wide" aria-labelledby="article-title">
+
+  <!-- Table of Contents -->
+  {% if theme.article.toc | default(true) %}
+  <aside class="toc-sidebar" aria-label="目录">
+    <div class="toc-title">目录</div>
+    <button class="toc-toggle" id="tocToggle" aria-expanded="false">目录 &#9776;</button>
+    <nav class="toc-content" id="tocContent">
+      {{ toc(page.content, { class: 'toc-list', list_number: false }) }}
+    </nav>
+  </aside>
+  {% endif %}
+
+  <!-- Article Body -->
+  <div class="article-main">
+    <header class="article-header">
+      <h1 class="article-title" id="article-title">{{ page.title }}</h1>
+      <div class="article-meta">
+        <time datetime="{{ date(page.date, 'YYYY-MM-DD') }}">{{ date(page.date, 'YYYY-MM-DD') }}</time>
+        {% if page.updated %}<span>&middot;</span><span>更新于 {{ date(page.updated, 'YYYY-MM-DD') }}</span>{% endif %}
+      </div>
+      {% if page.tags and page.tags.length > 0 %}
+      <div class="tag-list">
+        {% for tag in page.tags.toArray() %}
+        <a href="{{ url_for(tag.path) }}" class="tag">{{ tag.name }}</a>
+        {% endfor %}
+      </div>
+      {% endif %}
+    </header>
+
+    <div class="article-body">
+      {{ page.content }}
+    </div>
+
+    <!-- Post Navigation -->
+    <nav class="post-nav" aria-label="文章导航">
+      <div>
+        {% if page.prev %}
+        <a href="{{ url_for(page.prev.path) }}" class="post-nav-link">
+          <span class="post-nav-direction">&larr; 上一篇</span>
+          <span class="post-nav-label">{{ page.prev.title }}</span>
+        </a>
+        {% endif %}
+      </div>
+      <div>
+        {% if page.next %}
+        <a href="{{ url_for(page.next.path) }}" class="post-nav-link post-nav-next">
+          <span class="post-nav-direction">下一篇 &rarr;</span>
+          <span class="post-nav-label">{{ page.next.title }}</span>
+        </a>
+        {% endif %}
+      </div>
+    </nav>
+
+    <!-- Action links -->
+    <div class="article-actions">
+      <a href="{{ url_for('/') }}" class="article-action-link">&larr; 回到首页</a>
+      <a href="#" class="article-action-link" id="backToTopLink">&uarr; 回到顶部</a>
+    </div>
+  </div>
+
+</article>
+{% endblock %}

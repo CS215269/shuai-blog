@@ -1,0 +1,36 @@
+# Hexo Site Configuration
+title: 张三的博客
+subtitle: 写代码、做设计、思考文字排印之美
+description: 一个简约、文档风格的个人博客
+author: 张三
+language: zh-CN
+timezone: Asia/Shanghai
+
+url: https://example.com
+root: /
+permalink: :year/:month/:day/:title/
+
+# Theme
+theme: latex-minimal
+
+# Pagination
+index_generator:
+  per_page: 10
+  order_by: -date
+
+# Markdown rendering
+marked:
+  gfm: true
+  pedantic: false
+  breaks: false
+
+# Code highlighting
+highlight:
+  enable: true
+  line_number: false
+
+# Date format
+date_format: YYYY-MM-DD
+
+# Default frontmatter for new posts
+default_category: uncategorized

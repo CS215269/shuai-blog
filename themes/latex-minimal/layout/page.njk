@@ -1,0 +1,12 @@
+{% extends "base.njk" %}
+
+{% block content %}
+<article class="container" style="padding-top: 3rem; padding-bottom: 3rem;">
+  <header class="article-header">
+    <h1 class="article-title">{{ page.title }}</h1>
+  </header>
+  <div class="article-body">
+    {{ page.content }}
+  </div>
+</article>
+{% endblock %}

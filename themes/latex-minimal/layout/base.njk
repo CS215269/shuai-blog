@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="{{ config.language | default('zh-CN') }}" data-theme="{% if theme.dark_mode_default | default(true) %}dark{% else %}light{% endif %}">
+<head>
+  {% include "partial/head.njk" %}
+</head>
+<body>
+  {% include "partial/header.njk" %}
+
+  <main id="main-content">
+    {% block content %}{% endblock %}
+  </main>
+
+  {% include "partial/footer.njk" %}
+
+  <button class="back-to-top" id="backToTopBtn" aria-label="回到顶部" title="回到顶部">&uarr;</button>
+
+  <script src="{{ url_for('js/main.js') }}"></script>
+</body>
+</html>

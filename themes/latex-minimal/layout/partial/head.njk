@@ -1,0 +1,5 @@
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{% if is_home() %}{{ config.title }}{% elseif page.title %}{{ page.title }} &middot; {{ config.title }}{% else %}{{ config.title }}{% endif %}</title>
+{% if page.description %}<meta name="description" content="{{ page.description }}">{% endif %}
+<link rel="stylesheet" href="{{ url_for('css/style.css') }}">

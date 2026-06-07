@@ -1,0 +1,7 @@
+# Dependencies
+node_modules/
+
+# Hexo generated files
+public/
+.deploy_git/
+db.json

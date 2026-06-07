@@ -1,0 +1,39 @@
+# LaTeX Minimal Theme Configuration
+
+# Site header
+header:
+  title: ~/blog
+
+# Home page links (displayed on index)
+links:
+  - name: GitHub
+    url: https://github.com
+    icon: github
+  - name: Email
+    url: mailto:example@example.com
+    icon: email
+  - name: Twitter
+    url: https://twitter.com
+    icon: twitter
+  - name: RSS
+    url: /atom.xml
+    icon: rss
+
+# Article page
+article:
+  toc: true                # Show table of contents
+  toc_collapse: true       # Collapse sub-items on desktop
+
+# Dark mode
+dark_mode_default: true    # Dark mode as default
+
+# Custom colors (override CSS variables)
+# colors:
+#   dark:
+#     bg: "#1a1a1c"
+#     text: "#d4cfc6"
+#     accent: "#c2855b"
+#   light:
+#     bg: "#fdfcf8"
+#     text: "#2d2c28"
+#     accent: "#a0522d"

@@ -1,0 +1,25 @@
+{% extends "base.njk" %}
+
+{% block content %}
+<section class="container" style="padding-top: 3rem; padding-bottom: 3rem;">
+  <h1 class="hero-name" style="text-align: center; margin-bottom: 2rem;">归档</h1>
+
+  {% set currentYear = 0 %}
+  {% for post in site.posts.sort('date', -1).toArray() %}
+    {% set postYear = date(post.date, 'YYYY') %}
+    {% if postYear !== currentYear %}
+      {% set currentYear = postYear %}
+      {% if not loop.first %}</ul>{% endif %}
+      <h2 style="margin-top: 2rem; margin-bottom: 0.75rem; font-weight: 400; color: var(--text-muted);">{{ postYear }}</h2>
+      <ul class="post-list">
+    {% endif %}
+    <li class="post-item">
+      <a href="{{ url_for(post.path) }}" class="post-link">
+        <span class="post-title-text">{{ post.title }}</span>
+        <span class="post-date">{{ date(post.date, 'MM-DD') }}</span>
+      </a>
+    </li>
+  {% endfor %}
+  </ul>
+</section>
+{% endblock %}

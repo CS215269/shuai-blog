@@ -1,0 +1,10 @@
+<a href="#main-content" class="skip-link">跳转到内容</a>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="{{ url_for('/') }}" class="site-title">{{ theme.header.title | default(config.title) }}</a>
+    <div class="header-actions">
+      <button class="theme-toggle" id="themeToggle" aria-label="切换明暗主题" title="切换主题 (Ctrl+Shift+T)">&#9789;</button>
+    </div>
+  </div>
+</header>
