@@ -7,14 +7,14 @@ header:
 # Home page links (displayed on index)
 links:
   - name: GitHub
-    url: https://github.com
+    url: https://github.com/CS215269
     icon: github
   - name: Email
-    url: mailto:example@example.com
+    url: mailto:chenshuai.dev@qq.com
     icon: email
-  - name: Twitter
-    url: https://twitter.com
-    icon: twitter
+  - name: 个人网站
+    url: https://shuai-blog.pages.dev/
+    icon: rss
   - name: RSS
     url: /atom.xml
     icon: rss

@@ -229,6 +229,15 @@ hr {
 .hero-slogan { font-size: 1.1rem; color: var(--text-muted); font-style: italic; margin-bottom: 2rem; }
 .hero-rule { width: 60px; height: 2px; background: var(--accent); margin: 0 auto; }
 
+/* Bio */
+.bio {
+  margin-bottom: 3rem;
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: var(--text-muted);
+}
+.bio p { margin-bottom: 0.6rem; }
+
 /* Section label */
 .section-label {
   font-size: 0.8rem;

@@ -1,12 +1,12 @@
 # Hexo Site Configuration
-title: 张三的博客
-subtitle: 写代码、做设计、思考文字排印之美
-description: 一个简约、文档风格的个人博客
-author: 张三
+title: 陈帅的博客
+subtitle: AI 工程化 · 全栈开发 · 效能优化
+description: 陈帅的个人博客，关注 AI 辅助开发、DevOps 工程实践与软件技术分享
+author: 陈帅
 language: zh-CN
 timezone: Asia/Shanghai
 
-url: https://example.com
+url: https://shuai-blog.pages.dev
 root: /
 permalink: :year/:month/:day/:title/
 
