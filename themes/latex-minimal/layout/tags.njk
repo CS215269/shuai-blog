@@ -1,0 +1,22 @@
+{% extends "base.njk" %}
+
+{% block content %}
+<section class="container" style="padding-top: 3rem; padding-bottom: 3rem;">
+  <h1 class="hero-name" style="text-align: center; margin-bottom: 0.5rem;">所有标签</h1>
+  <p style="text-align: center; color: var(--text-muted); margin-bottom: 2.5rem;">
+    {{ site.tags.length }} 个标签
+  </p>
+
+  <ul class="tag-cloud">
+    {% for tag in site.tags.toArray() %}
+    <li class="tag-cloud-item">
+      <a href="{{ url_for(tag.path) }}" class="tag-cloud-link">{{ tag.name }} <span class="tag-cloud-count">{{ tag.posts.length }}</span></a>
+    </li>
+    {% endfor %}
+  </ul>
+
+  <div style="text-align: center; margin-top: 2rem;">
+    <a href="{{ url_for('/') }}" class="article-action-link">&larr; 回到首页</a>
+  </div>
+</section>
+{% endblock %}

@@ -738,3 +738,35 @@ h4:hover .headerlink,
   text-decoration: none;
 }
 .project-link:hover { text-decoration: underline; }
+
+/* ---- Tag Cloud ---- */
+.tag-cloud {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  justify-content: center;
+}
+.tag-cloud-item { margin: 0; }
+.tag-cloud-link {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  padding: 0.3rem 0.7rem;
+  border-radius: var(--radius);
+  text-decoration: none;
+  transition: color var(--transition), border-color var(--transition);
+}
+.tag-cloud-link:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+.tag-cloud-count {
+  font-size: 0.75rem;
+  color: var(--text-faint);
+  margin-left: 0.3rem;
+}
