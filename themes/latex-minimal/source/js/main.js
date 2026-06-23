@@ -105,4 +105,38 @@
     headings.forEach(function (h) { observer.observe(h); });
   }
 
+  // ---- Mobile Nav Toggle ----
+  var navToggle = document.getElementById('navToggle');
+  var navPanel = document.getElementById('navPanel');
+
+  function openNav() {
+    if (!navToggle || !navPanel) return;
+    navPanel.hidden = false;
+    navToggle.setAttribute('aria-expanded', 'true');
+    navToggle.setAttribute('aria-label', '关闭导航菜单');
+    var firstLink = navPanel.querySelector('.nav-panel-link');
+    if (firstLink) firstLink.focus();
+  }
+
+  function closeNav() {
+    if (!navToggle || !navPanel) return;
+    navPanel.hidden = true;
+    navToggle.setAttribute('aria-expanded', 'false');
+    navToggle.setAttribute('aria-label', '打开导航菜单');
+    navToggle.focus();
+  }
+
+  if (navToggle && navPanel) {
+    navToggle.addEventListener('click', function () {
+      var isOpen = navToggle.getAttribute('aria-expanded') === 'true';
+      if (isOpen) closeNav(); else openNav();
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && navToggle.getAttribute('aria-expanded') === 'true') {
+        closeNav();
+      }
+    });
+  }
+
 })();
