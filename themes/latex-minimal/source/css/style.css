@@ -674,18 +674,26 @@ h4:hover .headerlink,
     gap: 2rem;
   }
   .nav-panel-link {
+    display: inline-block;
     font-family: var(--font-serif);
     font-size: 1.5rem;
     font-weight: 500;
     color: var(--text);
+    background: var(--bg-surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
     text-decoration: none;
-    padding: 0.5rem 1rem;
-    transition: color 180ms ease, transform 180ms ease;
+    padding: 0.6rem 2rem;
+    min-width: 200px;
+    text-align: center;
+    transition: color 180ms ease, border-color 180ms ease, background 180ms ease, transform 180ms ease;
   }
   .nav-panel-link:hover,
   .nav-panel-link.is-active {
     color: var(--accent);
-    transform: scale(1.05);
+    border-color: var(--accent);
+    background: var(--bg);
+    transform: scale(1.03);
   }
 }
 
