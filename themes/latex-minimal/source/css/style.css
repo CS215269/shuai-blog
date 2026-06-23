@@ -652,7 +652,9 @@ h4:hover .headerlink,
     display: block;
     position: fixed;
     inset: 0;
-    background: var(--bg);
+    background: color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     opacity: 0;
     visibility: hidden;
     transition: opacity 200ms ease, visibility 200ms ease;
@@ -674,14 +676,16 @@ h4:hover .headerlink,
   .nav-panel-link {
     font-family: var(--font-serif);
     font-size: 1.5rem;
-    color: var(--text-muted);
+    font-weight: 500;
+    color: var(--text);
     text-decoration: none;
     padding: 0.5rem 1rem;
-    transition: color 180ms ease;
+    transition: color 180ms ease, transform 180ms ease;
   }
   .nav-panel-link:hover,
   .nav-panel-link.is-active {
     color: var(--accent);
+    transform: scale(1.05);
   }
 }
 
