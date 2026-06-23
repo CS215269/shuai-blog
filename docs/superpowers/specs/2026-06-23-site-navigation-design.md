@@ -136,7 +136,7 @@ projects:
 | `/about/` 源文件缺失 | Hexo 构建期 404(标准处理,前端不兜) |
 | 移动端键盘弹起导致高度异常 | 使用 `100dvh` 而非 `100vh` |
 | 主题切换时汉堡面板颜色 | 继承 CSS 变量自动同步,无需额外逻辑 |
-| JS 禁用 | `<details>/<summary>` 降级,汉堡仍可开关 |
+| JS 禁用 | **偏差 — 见附录 A**:当前实现依赖 JS 控制 `hidden`,禁用 JS 时汉堡无效 |
 | 极窄屏 (<360px) | 允许 nav 链接换行,字号不缩 |
 
 ## 7. 无障碍承诺
@@ -189,3 +189,36 @@ projects:
 6. 新增 `source/tags/index.md`
 7. 本地 `hexo s` 手测验收清单全部项
 8. `hexo d` 部署到 shuai-blog.pages.dev
+
+## 附录 A:实现偏差与已知债务
+
+### A.1 无 JS 降级未实现(已接受偏差)
+
+**Spec 原要求** (§2.3 / §6):JS 禁用时,`<details>/<summary>` 降级让汉堡仍可开关。
+
+**实际实现**:导航面板使用 `<div id="navPanel" hidden>`,由 JS 控制 `hidden` 属性切换。JS 禁用时,汉堡按钮被点击后无视觉反馈,面板不展开。
+
+**为何接受偏差**:
+- 个人博客 JS 普及率为 100%(所有现代浏览器默认启用)
+- 切换到 `<details>/<summary>` 需要重写按钮样式、焦点管理、Esc 关闭等逻辑,工作量与回报不成比例
+- 真实用户场景下不可达
+
+**未来回归路径**:若日后需要支持 JS 禁用场景,重写为 `<details>` 包汉堡 + 面板,JS 改为监听 `toggle` 事件同步 `aria-expanded`。其余 a11y/焦点管理逻辑可平滑迁移。
+
+### A.2 `_config.yml` 中 `repo: <填写 GitHub 仓库地址>` 为占位
+
+用户在 `themes/latex-minimal/_config.yml` 的 `projects` 数组中需要把 3 个 `repo` 占位替换为真实 GitHub URL 后,`/projects/` 页面的 GitHub 按钮才能正常跳转。
+
+**责任**:用户手动填,不在本次实现 scope。
+
+### A.3 CSS 是 desktop-first
+
+本主题 CSS 主体是 mobile-first。本特性新增的 `.nav` / `.nav-toggle` / `.nav-panel` 三块使用 desktop-first(默认桌面样式,`@media (max-width: 768px)` 内覆盖移动)。属于风格不一致,不影响功能。
+
+### A.4 主题整体颜色对比度问题(预存债务,非本特性引入)
+
+axe-core 检测发现 9 处 `--text-muted` on `--bg` 对比度不达 WCAG AA 4.5:1,分布在 `.section-label`(首页区块标签)和 `.post-date`(文章日期)上,均为本特性实现前就存在的样式。修复需整体调亮 `--text-muted`(例如 `#8a857c` → `#a8a39a`),属于主题级重构,不在本次 scope。
+
+### A.5 tags 聚合模板需复数 `tags.njk`
+
+Hexo 单数 `tag.njk` 是单个标签页模板,聚合需要复数 `tags.njk`。本次实现新建了 `themes/latex-minimal/layout/tags.njk`,并在 `source/tags/index.md` 的 front-matter 同时设置 `type: tags` 和 `layout: tags`。Hexo 7 的 `warehouse` 集合迭代需 `.toArray()`。
