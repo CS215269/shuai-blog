@@ -1,0 +1,32 @@
+{% extends "base.njk" %}
+
+{% block content %}
+<section class="container" style="padding-top: 3rem; padding-bottom: 3rem;">
+  <h1 class="hero-name" style="text-align: center; margin-bottom: 2rem;">作品集</h1>
+
+  {% if theme.projects and theme.projects.length > 0 %}
+  <ul class="project-list">
+    {% for project in theme.projects %}
+    <li class="project-card">
+      <h2 class="project-name">{{ project.name }}</h2>
+      <p class="project-desc">{{ project.desc }}</p>
+      {% if project.tags and project.tags.length > 0 %}
+      <div class="project-tags">
+        {% for tag in project.tags %}<span class="project-tag">{{ tag }}</span>{% endfor %}
+      </div>
+      {% endif %}
+      <div class="project-links">
+        {% if project.repo %}<a href="{{ project.repo }}" class="project-link" target="_blank" rel="noopener">GitHub</a>{% endif %}
+        {% if project.demo %}<a href="{{ project.demo }}" class="project-link" target="_blank" rel="noopener">Demo</a>{% endif %}
+      </div>
+    </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+  <p style="text-align: center; color: var(--text-muted);">暂无项目</p>
+  <div style="text-align: center; margin-top: 2rem;">
+    <a href="{{ url_for('/') }}" class="article-action-link">&larr; 回到首页</a>
+  </div>
+  {% endif %}
+</section>
+{% endblock %}
