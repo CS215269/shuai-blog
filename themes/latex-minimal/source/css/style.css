@@ -587,3 +587,100 @@ h4:hover .headerlink,
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
 }
+
+/* ---- Navigation ---- */
+.nav {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+.nav-list {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.nav-item { margin: 0; }
+.nav-link {
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  letter-spacing: 0.02em;
+  color: var(--text-muted);
+  text-decoration: none;
+  padding: 0.25rem 0;
+  border-bottom: 1px solid transparent;
+  transition: color 180ms ease, border-color 180ms ease;
+}
+.nav-link:hover { color: var(--text); }
+.nav-link.is-active {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+/* Hamburger button (hidden on desktop, shown on mobile) */
+.nav-toggle {
+  display: none;
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  cursor: pointer;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  transition: color var(--transition), border-color var(--transition);
+}
+.nav-toggle:hover { color: var(--accent); border-color: var(--accent); }
+.nav-toggle-icon { width: 18px; height: 18px; }
+.nav-toggle-icon-close { display: none; }
+.nav-toggle[aria-expanded="true"] .nav-toggle-icon-open { display: none; }
+.nav-toggle[aria-expanded="true"] .nav-toggle-icon-close { display: block; }
+
+/* Panel (hidden by default; mobile will override) */
+.nav-panel { display: none; }
+.nav-panel-list { list-style: none; margin: 0; padding: 0; }
+
+/* ---- Mobile Navigation ---- */
+@media (max-width: 768px) {
+  .nav { display: none; }
+  .nav-toggle { display: flex; }
+  .nav-panel {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: var(--bg);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 200ms ease, visibility 200ms ease;
+    z-index: 200;
+  }
+  .nav-panel:not([hidden]) {
+    opacity: 1;
+    visibility: visible;
+  }
+  .nav-panel[hidden] { display: none; }
+  .nav-panel-list {
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+  }
+  .nav-panel-link {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    transition: color 180ms ease;
+  }
+  .nav-panel-link:hover,
+  .nav-panel-link.is-active {
+    color: var(--accent);
+  }
+}
