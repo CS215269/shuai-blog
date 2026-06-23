@@ -1,5 +1,16 @@
 # LaTeX Minimal Theme Configuration
 
+# Top navigation (rendered in header.njk)
+nav:
+  - label: 首页
+    url: /
+  - label: 关于
+    url: /about/
+  - label: 作品集
+    url: /projects/
+  - label: 标签
+    url: /tags/
+
 # Site header
 header:
   title: ~/blog
@@ -37,3 +48,18 @@ dark_mode_default: true    # Dark mode as default
 #     bg: "#fdfcf8"
 #     text: "#2d2c28"
 #     accent: "#a0522d"
+
+# Projects (rendered in projects.njk)
+projects:
+  - name: 校园招聘管理平台
+    desc: 独立开发的校内招聘信息聚合与投递管理 Web 应用
+    tags: [Vue3, Node.js, MySQL]
+    repo: <填写 GitHub 仓库地址>
+  - name: Gitea + Woodpecker CI/CD
+    desc: 私有化部署的代码托管与持续集成流水线
+    tags: [Gitea, Woodpecker, Docker]
+    repo: <填写 GitHub 仓库地址>
+  - name: 个人博客(本站)
+    desc: 基于 Hexo 自定义 LaTeX 极简主题
+    tags: [Hexo, Nunjucks, CSS]
+    repo: <填写 GitHub 仓库地址>
