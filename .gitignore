@@ -5,3 +5,10 @@ node_modules/
 public/
 .deploy_git/
 db.json
+
+# Verification artifacts (Playwright screenshots, Lighthouse output)
+*.png
+!source/**/*.png
+lighthouse*.json
+.claude/
+.playwright-mcp/
