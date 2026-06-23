@@ -3,8 +3,51 @@
 <header class="site-header">
   <div class="header-inner">
     <a href="{{ url_for('/') }}" class="site-title">{{ theme.header.title | default(config.title) }}</a>
+
+    {% if theme.nav and theme.nav.length > 0 %}
+    <nav class="nav" aria-label="主导航">
+      <ul class="nav-list" id="navList">
+        {% for item in theme.nav %}
+        {% set isActive = (item.url === '/' and is_home()) or (item.url !== '/' and page.path and page.path.indexOf(item.url.replace('/', '')) === 0) %}
+        <li class="nav-item">
+          <a href="{{ url_for(item.url) }}"
+             class="nav-link{% if isActive %} is-active{% endif %}"
+             {% if isActive %}aria-current="page"{% endif %}>{{ item.label }}</a>
+        </li>
+        {% endfor %}
+      </ul>
+    </nav>
+    {% endif %}
+
     <div class="header-actions">
+      <button class="nav-toggle" id="navToggle"
+              aria-expanded="false"
+              aria-controls="navPanel"
+              aria-label="打开导航菜单">
+        <svg class="nav-toggle-icon nav-toggle-icon-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <line x1="4" y1="7" x2="20" y2="7"/>
+          <line x1="4" y1="12" x2="20" y2="12"/>
+          <line x1="4" y1="17" x2="20" y2="17"/>
+        </svg>
+        <svg class="nav-toggle-icon nav-toggle-icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <line x1="6" y1="6" x2="18" y2="18"/>
+          <line x1="18" y1="6" x2="6" y2="18"/>
+        </svg>
+      </button>
       <button class="theme-toggle" id="themeToggle" aria-label="切换明暗主题" title="切换主题 (Ctrl+Shift+T)">&#9789;</button>
     </div>
   </div>
+
+  {% if theme.nav and theme.nav.length > 0 %}
+  <div class="nav-panel" id="navPanel" hidden>
+    <ul class="nav-panel-list">
+      {% for item in theme.nav %}
+      <li class="nav-panel-item">
+        <a href="{{ url_for(item.url) }}"
+           class="nav-panel-link{% if (item.url === '/' and is_home()) or (item.url !== '/' and page.path and page.path.indexOf(item.url.replace('/', '')) === 0) %} is-active{% endif %}">{{ item.label }}</a>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endif %}
 </header>
