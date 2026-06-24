@@ -10,7 +10,6 @@
 
   {% if theme.links and theme.links.length > 0 %}
   <section style="margin-top: 3rem;">
-    <div class="section-label">联系我</div>
     <div class="link-grid">
       {% for link in theme.links %}
       <a href="{{ link.url }}" class="link-item" {% if link.url | first !== '/' %}target="_blank" rel="noopener"{% endif %}>
