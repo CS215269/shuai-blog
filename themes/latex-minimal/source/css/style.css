@@ -55,6 +55,7 @@
 
 html {
   scroll-behavior: smooth;
+  scrollbar-gutter: stable;
   font-size: 18px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -421,6 +422,7 @@ hr {
 /* Article body */
 .article-body { font-size: 1rem; line-height: 1.8; }
 .article-body h2 { padding-bottom: 0.4rem; border-bottom: 1px solid var(--rule); }
+.article-body ul { list-style: none; padding-left: 0; }
 
 /* Heading anchor links (Hexo headerlink) */
 .headerlink {
