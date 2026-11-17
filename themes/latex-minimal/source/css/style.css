@@ -186,11 +186,14 @@ hr {
 .site-title {
   font-size: 1.15rem;
   font-weight: 600;
-  color: var(--text);
+  color: var(--text-muted);
   text-decoration: none;
   letter-spacing: -0.01em;
 }
-.site-title:hover { color: var(--accent); }
+.crumb-base { color: var(--text-muted); }
+.crumb-base:hover { color: var(--accent); }
+.crumb-sep { color: var(--text-faint); padding: 0 .15em; }
+.crumb-current { color: var(--accent); }
 .header-actions { display: flex; align-items: center; gap: 0.75rem; }
 
 /* Theme Toggle */

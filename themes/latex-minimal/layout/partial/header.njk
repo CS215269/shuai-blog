@@ -1,8 +1,18 @@
+{% set crumbSeg = '' %}
+{% if page.path and theme.nav %}
+  {% for item in theme.nav %}
+    {% if item.url !== '/' and page.path.indexOf(item.url.replace('/', '')) === 0 %}
+      {% set crumbSeg = item.url.replace('/', '').replace('/', '') %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
 <a href="#main-content" class="skip-link">跳转到内容</a>
 
 <header class="site-header">
   <div class="header-inner">
-    <a href="{{ url_for('/') }}" class="site-title">{{ theme.header.title | default(config.title) }}</a>
+    <span class="site-title">
+      <a href="{{ url_for('/') }}" class="crumb-base">{{ theme.header.title | default(config.title) }}</a>{% if crumbSeg %}<span class="crumb-sep">/</span><span class="crumb-current">{{ crumbSeg }}</span>{% endif %}
+    </span>
 
     {% if theme.nav and theme.nav.length > 0 %}
     <nav class="nav" aria-label="主导航">

@@ -10,6 +10,8 @@ nav:
     url: /projects/
   - label: 标签
     url: /tags/
+  - label: 导航
+    url: /nav/
 
 # Site header
 header:
