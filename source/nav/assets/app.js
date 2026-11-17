@@ -240,7 +240,7 @@
     var cur = document.documentElement.getAttribute("data-theme");
     var next = cur === "dark" ? "light" : "dark";
     document.documentElement.setAttribute("data-theme", next);
-    try { localStorage.setItem("nav-theme", next); } catch (e) {}
+    try { localStorage.setItem("theme", next); } catch (e) {}
     renderContent();   // 头像配色随主题变化
   });
 
@@ -264,7 +264,7 @@
 
   /* ---------- 启动 ---------- */
   try {
-    var saved = localStorage.getItem("nav-theme");
+    var saved = localStorage.getItem("theme");
     if (saved) document.documentElement.setAttribute("data-theme", saved);
   } catch (e) {}
 
