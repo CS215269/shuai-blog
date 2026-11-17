@@ -92,8 +92,11 @@ code { font-family: var(--font-mono); font-size: .85em; background: var(--bg-cod
   display: flex; align-items: center; justify-content: space-between; gap: 1.25rem;
 }
 .brand { min-width: 0; }
-.site-title { font-size: 1.2rem; font-weight: 600; color: var(--text); letter-spacing: -.01em; }
-.site-title:hover { color: var(--accent); }
+.site-title { font-size: 1.2rem; font-weight: 600; color: var(--text-muted); letter-spacing: -.01em; }
+.crumb-base { color: var(--text-muted); }
+.crumb-base:hover { color: var(--accent); }
+.crumb-sep { color: var(--text-faint); padding: 0 .15em; }
+.crumb-current { color: var(--accent); }
 .site-subtitle { font-size: .82rem; color: var(--text-muted); margin-top: .15rem; }
 
 .header-actions { display: flex; align-items: center; gap: .75rem; }
